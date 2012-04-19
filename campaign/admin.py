@@ -3,6 +3,7 @@ from django import template
 from django import forms
 from django.utils.functional import update_wrapper
 from django.contrib import admin
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib.admin.util import unquote
 from django.core.exceptions import PermissionDenied
@@ -52,7 +53,7 @@ class CampaignAdmin(admin.ModelAdmin):
                 raise PermissionDenied
             
             num_sent = obj.send()
-            request.user.message_set.create(message=_(u'The %(name)s "%(obj)s" was successfully sent. %(num_sent)s messages delivered.' %  {'name': force_unicode(opts.verbose_name), 'obj': force_unicode(obj), 'num_sent': num_sent,}))
+            messages.info(request, message=_(u'The %(name)s "%(obj)s" was successfully sent. %(num_sent)s messages delivered.' %  {'name': force_unicode(opts.verbose_name), 'obj': force_unicode(obj), 'num_sent': num_sent,}))
             return HttpResponseRedirect('../')
 
         
