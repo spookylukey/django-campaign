@@ -70,7 +70,6 @@ class CampaignAdmin(admin.ModelAdmin):
             'object': obj,
             'is_popup': request.REQUEST.has_key('_popup'),
             'media': mark_safe(media),
-            'root_path': self.admin_site.root_path,
             'app_label': opts.app_label,
             'opts': opts,
         }
