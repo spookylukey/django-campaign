@@ -14,7 +14,6 @@ class JSONFormField(forms.CharField):
         super(JSONFormField, self).__init__(*args, **kwargs)
  
     def clean(self, value):
-        if not value: return
         try:
             return simplejson.loads(value)
         except Exception, exc:

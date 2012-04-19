@@ -35,7 +35,7 @@ class SubscriberList(models.Model):
     """
     name = models.CharField(_(u"Name"), max_length=255)
     content_type = models.ForeignKey(ContentType)
-    filter_condition = JSONField(default="{}", help_text=_(u"Django ORM compatible lookup kwargs which are used to get the list of objects."))
+    filter_condition = JSONField(default="{}", help_text=_(u"Django ORM compatible lookup kwargs which are used to get the list of objects."), blank=True)
     email_field_name = models.CharField(_(u"Email-Field name"), max_length=64, help_text=_(u"Name of the model field which stores the recipients email address"))
     
     def __unicode__(self):
