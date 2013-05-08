@@ -1,7 +1,8 @@
+from functools import update_wrapper
+
 from django.shortcuts import render_to_response
 from django import template
 from django import forms
-from django.utils.functional import update_wrapper
 from django.contrib import admin
 from django.contrib import messages
 from django.http import HttpResponseRedirect
